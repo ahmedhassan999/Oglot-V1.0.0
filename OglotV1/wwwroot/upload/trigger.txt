@@ -1,0 +1,22 @@
+USE [TicketsDileny]
+GO
+
+/****** Object:  Trigger [dbo].[trig_insertforeditingAVGandQty]    Script Date: 22-2-2020 10:21:22 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+alter TRIGGER [dbo].[trig_Last modification date]
+   ON [dbo].[Ticket] 
+   AFTER  INSERT,Update
+AS 
+BEGIN
+--first check ifitemalready in store or not
+update Ticket set LastStatusChangedDate=(GETDATE()) 
+
+ALTER TABLE [dbo].[Ticket] ENABLE TRIGGER [trig_Last modification date]
+
+end
+
